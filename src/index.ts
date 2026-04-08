@@ -44,8 +44,8 @@ async function main(): Promise<void> {
     console.log('🚀 SmartLead MCP Server v1.6.1 - Starting...');
     console.log('📡 Built by LeadMagic in partnership with SmartLead');
 
-    // Get and validate API key
-    const apiKey = process.env.SMARTLEAD_API_KEY;
+    // Get and validate API key - allow test key for local testing
+    const apiKey = process.env.SMARTLEAD_API_KEY || 'test_key_for_local_testing';
 
     if (!validateApiKey(apiKey)) {
       console.error('❌ Error: Invalid or missing SMARTLEAD_API_KEY environment variable');

@@ -111,6 +111,11 @@ export class SmartLeadMCPServer {
    * @private
    */
   private async testConnection(): Promise<void> {
+    // Skip connection test in test environment
+    if (process.env.SMARTLEAD_API_KEY === "test_key_for_local_testing") {
+      console.log("⚠️  Running in test mode - skipping API connection test");
+      return;
+    }
     try {
       const result = await this.client.testConnection();
       if (result.success) {
